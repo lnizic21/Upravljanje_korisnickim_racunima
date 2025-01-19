@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  createdAt    DateTime      @default(now())
+  firstName    String
+  lastName     String
+  email        String        @unique
+  passwordHash String
+  status       String        @default("active")
+  typeId       Int?
+  activity     Activity[]
+  userType     UserType?     @relation(fields: [typeId], references: [id])
+  permissions  UserPermission[]
+  metadata     Metadata[]
+  auditLogs    AuditLog[]
+}
+
+model Activity {
+  id       Int          @id // shared
+  url      String       @unique // shared
+  duration Int? // video-only
+  body     String? // article-only
+  type     ActivityType // discriminator
+  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId String
+}
+
+enum ActivityType {
+  Video
+  Article
+}
+
+model UserType {
+  id          Int      @id @default(autoincrement())
+  typeName    String   @unique
+  description String?
+  users       User[]
+}
+
+model Permission {
+  id          String          @id @default(uuid())
+  permissionName String       @unique
+  description String?
+  userPermissions UserPermission[]
+}
+
+model UserPermission {
+  id           String     @id @default(uuid())
+  userId       String
+  permissionId String
+  grantedAt    DateTime   @default(now())
+  user         User       @relation(fields: [userId], references: [id])
+  permission   Permission @relation(fields: [permissionId], references: [id])
+}
+
+
+
+model Metadata {
+  id       String      @id @default(uuid())
+  keyName  MetadataKey
+  value    String
+  userId   String?
+  user     User?    @relation(fields: [userId], references: [id])
+}
+
+
+enum MetadataKey {
+  THEME
+  LANGUAGE
+  NOTIFICATIONS
+  TIMEZONE
+  DISPLAY_MODE
+  EMAIL_PREFERENCES
+}
+
+enum AuditLogAction {
+  USER_LOGIN
+  USER_LOGOUT
+  USER_CREATED
+  USER_UPDATED
+  USER_DELETED
+  PERMISSION_ADDED
+  PERMISSION_REMOVED
+  PROFILE_UPDATE
+  PASSWORD_CHANGED
+  SETTINGS_UPDATED
+}
+
+model AuditLog {
+  id             String         @id @default(uuid())
+  action         AuditLogAction
+  actionTimestamp DateTime      @default(now())
+  userId         String?
+  user           User?         @relation(fields: [userId], references: [id])
+}

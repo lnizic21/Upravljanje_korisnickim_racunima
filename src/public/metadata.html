@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metadata Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/admin.html">Admin</a></li>
+            <li><a href="/create_user.html">Create User</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Metadata Management</h1>
+        
+        <div class="form-container">
+            <h2>Add New Metadata</h2>
+            <form id="metadata-form">
+                <select id="user-select" required>
+                    <option value="">Select User</option>
+                </select>
+                
+                <select id="key-select" required>
+                    <option value="">Select Key</option>
+                    <option value="THEME">Theme</option>
+                    <option value="LANGUAGE">Language</option>
+                    <option value="NOTIFICATIONS">Notifications</option>
+                    <option value="TIMEZONE">Timezone</option>
+                    <option value="DISPLAY_MODE">Display Mode</option>
+                    <option value="EMAIL_PREFERENCES">Email Preferences</option>
+                </select>
+
+                <input type="text" id="value-input" placeholder="Value" required>
+                <button type="submit">Add Metadata</button>
+            </form>
+        </div>
+
+        <div class="metadata-list">
+            <h2>Current Metadata</h2>
+            <div id="metadata-table"></div>
+        </div>
+    </div>
+    <script src="js/metadata.js"></script>
+</body>
+</html>

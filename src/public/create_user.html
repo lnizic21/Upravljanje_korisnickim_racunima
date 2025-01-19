@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create User</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/admin.html">Admin</a></li>
+      <li><a href="/create_user.html">Create User</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Create New User</h1>
+    <form id="create-user-form">
+      <input type="text" id="firstName" placeholder="First Name" required />
+      <input type="text" id="lastName" placeholder="Last Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <select id="typeId" required>
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+        <option value="Guest" selected>Guest</option>
+      </select>
+
+      <h3>Assign Permissions</h3>
+      <div id="permissions-container"></div>
+
+      <h3>Set Metadata</h3>
+      <table>
+        <tr>
+          <td>Theme</td>
+          <td>
+            <select id="meta-theme">
+              <option value="dark" selected>Dark</option>
+              <option value="light">Light</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Language</td>
+          <td>
+            <select id="meta-language">
+              <option value="eng" selected>ENG</option>
+              <option value="hrv">HRV</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Notifications</td>
+          <td>
+            <select id="meta-notifications">
+              <option value="enabled" selected>Enabled</option>
+              <option value="disabled">Disabled</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Timezone</td>
+          <td>
+            <select id="meta-timezone">
+              <option value="Europe/Zagreb" selected>Europe/Zagreb</option>
+              <option value="UTC">UTC</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Display Mode</td>
+          <td>
+            <select id="meta-display">
+              <option value="normal" selected>Normal</option>
+              <option value="fullscreen">Fullscreen</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Email Preferences</td>
+          <td>
+            <select id="meta-email">
+              <option value="all" selected>All</option>
+              <option value="none">None</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
+      <button type="submit">Create User</button>
+    </form>
+
+    <p id="status-message"></p>
+  </div>
+
+  <script src="js/createUser.js"></script>
+</body>
+</html>

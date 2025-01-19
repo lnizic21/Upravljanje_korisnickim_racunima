@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/admin.html">Admin</a></li>
+            <li><a href="/create_user.html">Create User</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>User Details</h1>
+        <div id="user-info" class="detail-section">
+            <h2>Basic Information</h2>
+            <!-- User info will be inserted here -->
+        </div>
+
+        <div id="user-metadata" class="detail-section">
+            <h2>Metadata</h2>
+            <!-- Metadata will be inserted here -->
+        </div>
+
+        <div id="user-permissions" class="detail-section">
+            <h2>Permissions</h2>
+            <!-- Permissions will be inserted here -->
+        </div>
+
+        <div id="user-audit-logs" class="detail-section">
+            <h2>Activity History</h2>
+            <!-- Audit logs will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Modal for updating activity -->
+    <div id="update-activity-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Update Activity</h2>
+            <form id="update-activity-form">
+                <label for="update-type">Type:</label>
+                <input type="text" id="update-type" name="type" required>
+                <label for="update-url">URL:</label>
+                <input type="text" id="update-url" name="url" required>
+                <label for="update-duration">Duration:</label>
+                <input type="text" id="update-duration" name="duration" >
+                <label for="update-body">Body:</label>
+                <input type="text" id="update-body" name="body" >
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/user-details.js"></script>
+</body>
+</html>

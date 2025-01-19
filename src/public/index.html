@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/admin.html">Admin</a></li>
+      <li><a href="/create_user.html">Create User</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>User Management</h1>
+    <div id="users-list">
+      <h2>Users</h2>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Type ID</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="users-table-body">
+          <!-- User rows will be appended here -->
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- New modal for update -->
+    <div id="update-modal" class="hidden">
+      <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h2>Update User</h2>
+        <form id="update-user-form">
+          <input type="text" id="update-id" placeholder="User ID" required>
+          <input type="text" id="update-firstName" placeholder="First Name">
+          <input type="text" id="update-lastName" placeholder="Last Name">
+          <input type="password" id="update-password" placeholder="Password">
+          <input type="text" id="update-typeId" placeholder="Type ID">
+          <input type="text" id="update-status" placeholder="Status">
+          <input type="text" id="update-email" placeholder="Email">
+          <button type="submit">Update User</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
